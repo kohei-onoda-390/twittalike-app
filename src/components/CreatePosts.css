@@ -1,0 +1,112 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(91, 112, 131, 0.4); /* Twitter風のオーバーレイカラー */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 16px; /* 少し大きめの角丸 */
+  width: 90%;
+  max-width: 600px; /* Twitterの投稿モーダルに近い幅 */
+  min-height: 450px; /* モーダル全体の高さを少し調整 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative; 
+  display: flex; 
+  flex-direction: column;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  color: var(--text-primary);
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 親要素(.modal-content)の高さ一杯に広がる */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--text-primary);
+  flex-shrink: 0; /* タイトルが縮まないようにする */
+}
+
+.reply-info {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  background-color: var(--background-secondary-color);
+  border-radius: var(--border-radius-small);
+  color: var(--text-secondary);
+}
+
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  resize: none; /* 縦方向のリサイズを無効化 */
+  min-height: 300px; /* textareaの最小の高さを直接指定 */
+  box-sizing: border-box; /* paddingを含めた幅計算 */
+  flex-grow: 1; /* 利用可能な残りのスペースをすべて使う */
+  margin-bottom: 15px; /* フッターとの間にスペースを確保 */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-content textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.2);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0; /* フッターが縮まないようにする */
+}
+
+.char-count {
+  margin-right: auto;
+  color: var(--text-secondary);
+}
+
+.post-submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.post-submit-btn:hover {
+  background-color: var(--primary-color-hover);
+}

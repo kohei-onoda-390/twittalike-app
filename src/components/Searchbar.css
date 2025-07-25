@@ -1,0 +1,14 @@
+/* src/components/SearchBar.css */
+.search-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  width: 250px;
+}

@@ -1,0 +1,412 @@
+.viewpost-container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* 左サイドバー */
+.sidebar {
+  width: 275px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; 
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar .user-info {
+  padding: 0 10px;
+}
+
+.sidebar .user-info p {
+  font-weight: bold;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.btn-post {
+  width: 90%;
+  margin: 15px auto 0; /* 下マージンを削除し、他のボタンとの間隔を統一 */
+  padding: 16px;
+  font-size: 17px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn-post:hover {
+  background-color: var(--primary-color-hover);
+}
+.btn-logout {
+  /* 投稿ボタンとサイズを統一 */
+  width: 90%;
+  margin: 15px auto 0; /* 投稿ボタンとの間に15pxのマージンを設定 */
+  padding: 16px;
+  font-size: 17px;
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.btn-logout:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+/* サイドバーナビゲーション */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+  margin-bottom: auto; /* このプロパティで後続の要素（ログアウトボタン）を一番下に押しやります */
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
+  border-radius: var(--border-radius-pill);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-nav-link:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+.sidebar-nav-link.active {
+  font-weight: 900; /* 太字よりさらに太く */
+}
+
+.nav-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -8px; /* 少し上に調整 */
+  left: 15px; /* 位置を微調整 */
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px; /* 2桁以上の数字でも形が崩れないように調整 */
+  padding: 2px 6px; /* 上下左右の余白を増やす */
+  font-size: 12px; /* フォントサイズを少し大きく */
+  font-weight: bold;
+  line-height: 1;
+  border: 2px solid var(--background-color);
+  min-width: 12px; /* 1桁の時も円形を保つための最小幅 */
+  text-align: center; /* 数字を中央揃えに */
+}
+
+.sidebar-nav-link .nav-icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* 右投稿リスト */
+.post-list {
+  flex-grow: 1;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* メインコンテンツエリアをスクロール可能にする */
+}
+
+.posts-list-inner {
+  flex-grow: 1;
+  /* overflow-y: auto; を削除し、親の .post-list でスクロールを管理 */
+}
+
+.post-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.85); /* 半透明にしてスクロール時に下が透けるように */
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.timeline-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  /* ヘッダーの高さ(約59px)分だけ下にずらして固定 */
+  top: 59px;
+  /* スクロール時に下のコンテンツが透けないように背景色を設定 */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  /* ヘッダー(z-index: 10)よりは奥に配置 */
+  z-index: 9;
+}
+
+.timeline-tab {
+  flex-grow: 1;
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+}
+
+.timeline-tab:hover {
+  background-color: var(--secondary-color-hover);
+  color: var(--text-primary);
+}
+
+.timeline-tab.active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.search-form {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.search-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  font-size: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-pill);
+  background-color: var(--background-secondary-color);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.search-box:focus {
+  outline: none;
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.2);
+}
+
+.search-results-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.search-results-tab {
+  flex-grow: 1;
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+}
+
+.search-results-tab:hover {
+  background-color: var(--secondary-color-hover);
+  color: var(--text-primary);
+}
+
+.search-results-tab.active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.post-list-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.post-card {
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px;
+  background-color: var(--background-color);
+  transition: background-color 0.2s ease;
+  display: grid;
+  grid-template-columns: 48px 1fr; /* アバター用の固定幅と、コンテンツ用の可変幅 */
+  gap: 12px;
+}
+
+.post-card:hover {
+  background-color: #f7f7f7;
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--secondary-color);
+}
+
+.post-main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.post-header .user-info {
+  font-weight: bold;
+}
+
+.post-header .user-info a {
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.post-header .user-info a:hover {
+  text-decoration: underline;
+}
+
+.post-header .user-info .post-user-id {
+  color: var(--text-secondary);
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.post-header .post-time {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.delete-btn {
+  margin-left: auto;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: var(--border-radius-pill);
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+  color: var(--danger-color);
+}
+
+.error {
+  color: red;
+}
+
+.post-content {
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* アイコン間のスペースを広げる */
+  margin-top: 12px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.like-btn:hover {
+  color: var(--danger-color);
+}
+
+.like-btn:hover .like-icon {
+  fill: #f91880; /* ホバー時にピンク色に */
+}
+
+.reply-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.like-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-secondary);
+  transition: all 0.2s ease-in-out;
+}
+
+.like-btn.liked, .like-btn.liked .like-icon {
+  color: #f91880; /* いいね済みの色 */
+}
+
+.like-btn.liked .like-icon {
+  animation: heart-pop 0.5s ease;
+} 
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.reply-count,
+.likes-count {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.like-btn.liked .like-icon {
+  fill: #ff002b;
+  color: #ff002b;
+}
+
+.reply-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px; /* クリック領域を確保 */
+  margin: -6px; /* paddingによるレイアウト崩れを防ぐ */
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  border-radius: 50%; /* ホバー時の背景色を円形にする */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.reply-btn:hover {
+  color: var(--primary-color);
+  background-color: rgba(29, 155, 240, 0.1); /* Twitter風の薄い青背景 */
+}
+
+.no-results-message {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+}

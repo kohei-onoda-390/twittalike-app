@@ -1,0 +1,145 @@
+.notifications-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.notifications-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.notifications-header .back-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notifications-header .back-btn:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+.notifications-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.notifications-list {
+  flex-grow: 1;
+}
+
+.notification-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background-color: #f7f7f7;
+}
+
+.notification-item.unread {
+  /* 未読の通知の背景色を少し変える */
+  background-color: #f0f8ff; /* or var(--primary-color-light) if you have one */
+}
+
+.notification-item.unread:hover {
+  /* 未読の通知をホバーした際の色 */
+  background-color: #e6f2ff;
+}
+
+.notification-icon-container {
+  width: 32px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-top: 4px;
+}
+
+.notification-icon {
+  font-size: 20px;
+}
+.notification-icon.follow {
+  color: var(--primary-color);
+}
+.notification-icon.like {
+  color: #f91880;
+}
+.notification-icon.reply {
+  color: #00ba7c;
+}
+
+.notification-content {
+  display: flex;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.notification-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.notification-text {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.notification-text p {
+  margin: 0;
+}
+
+.notification-text .sender-name {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.notification-text .sender-name:hover {
+  text-decoration: underline;
+}
+
+.notification-post-context {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+}
+.notification-post-context:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+.message {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.message.error {
+  color: var(--danger-color);
+}

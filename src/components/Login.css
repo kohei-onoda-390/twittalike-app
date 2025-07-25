@@ -1,0 +1,66 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-secondary-color);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px;
+  padding: 48px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px; /* 少し大きめの角丸 */
+  background-color: var(--background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.login-form h1 {
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  font-size: 18px;
+  padding: 12px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  background-color: var(--background-secondary-color);
+  transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  outline: none;
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.2);
+}
+
+.login-form button {
+  padding: 12px 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px auto 0 auto;
+  border-radius: var(--border-radius-pill);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.login-form button:hover {
+  background-color: var(--primary-color-hover);
+}

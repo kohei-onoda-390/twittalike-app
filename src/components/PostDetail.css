@@ -1,0 +1,67 @@
+.post-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.post-detail-header .back-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-detail-header .back-btn:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+.post-detail-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.ancestors-section .post-card,
+.main-post-section .post-card {
+  border-bottom: none; /* メイン投稿の下線を消す */
+}
+
+.ancestors-section .post-avatar-container {
+  position: relative;
+}
+
+/* 親投稿とを繋ぐ縦線 */
+.ancestors-section .post-avatar-container::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background-color: var(--border-color);
+  top: 60px; /* アバターの高さ + α */
+  bottom: -16px; /* カードのpadding分 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.replies-section {
+  border-top: 1px solid var(--border-color);
+}
